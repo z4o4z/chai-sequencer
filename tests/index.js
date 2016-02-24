@@ -3,42 +3,41 @@
 let chai        = require('chai');
 let expect      = chai.expect;
 let sequencer   = require("../index");
-let SEE         = require('../see.js');
+let EventEmitter = require('events');
 
 chai.use(sequencer);
 
-let see = new SEE();
+let ee = new EventEmitter();
 
 describe('sequencer', function() {
 
     beforeEach(function() {
-        see.on('test1', () => console.log('test1 called'))
+        ee.on('test1', () => console.log('test1 called'))
     });
 
     afterEach(function() {
-        see.removeAllListeners();
+        ee.removeAllListeners();
     });
 
 
     it('quick test', function () {
-        see.emit('test1');
-        see.emit('test2');
-        see.emit('test3');
-        see.emit('test4');
-        see.emit('test4');
-        see.emit('test6');
-        see.emit('test8');
-        see.emit('test9');
+        ee.emit('test1');
+        ee.emit('test2');
+        ee.emit('test3');
+        ee.emit('test4');
+        ee.emit('test4');
+        ee.emit('test6');
+        ee.emit('test8');
+        ee.emit('test9');
 
-        expect(see).to
-            .sEmit('test1')
-            .sNext('test2')
-            .sSkip(2)
-            .sCallsCount(2)
-            .sEmit('test4')
-            .sNextOneOf('test5', 'test6', 'test7')
-            .sNext('test8')
-            .sNext('test9')
-            .sIsLast();
+        expect(ee).to
+            .emit('test1')
+            .next('test2')
+            .next.skip(2)
+            .next.calls(2)
+            .next('test6')
+            .next.oneOf('test5', 'test6', 'test7')
+            .next('test8')
+            .next.last('test9');
     });
 });
