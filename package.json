@@ -3,14 +3,30 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/z4o4z/chai-sequencer.git"
+  },
+  "keywords": [
+    "chai",
+    "mocha",
+    "sequence",
+    "events",
+    "eventemiter",
+    "emit"
+  ],
   "directories": {
     "test": "tests"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Evgeny Zaytsev <overhawlin@gmail.com>",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/z4o4z/chai-sequencer/issues"
+  },
+  "homepage": "https://github.com/z4o4z/chai-sequencer#readme",
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^2.4.5"

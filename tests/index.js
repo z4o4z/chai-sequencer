@@ -34,10 +34,10 @@ describe('sequencer', function() {
             .emit('test1')
             .next('test2')
             .next.skip(2)
-            .next.calls(2)
-            .next('test6')
+            .is('test4')
+            .is.calls(2)
             .next.oneOf('test5', 'test6', 'test7')
             .next('test8')
-            .next.last('test9');
+            .last('test9');
     });
 });
